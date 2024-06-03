@@ -1,12 +1,23 @@
 # AutoClean Edge Grasp Detection
 
 This repository consists of all the scripts and steps required for running the image capture, point cloud data (PCD) capture,
-and the detection process with runs the combination of YOLOv7 and edge depth detection.
+and the detection process which is a combination of YOLOv4/YOLOv7 region proposal and edge depth detection.
 The end goal is the detection and identification of the graspable edge pose for the successful grasping of an irregular part in a post-processing line.
 
-It is part of the AutoClean project, in which parts printed with Multi Jet Fusion (MJF) are cleaned and inspected automaticall in a processing line.
+It is part of the "[AutoClean](https://zaf.th-deg.de/public/project/286)" project, in which parts printed with Multi Jet Fusion (MJF) are cleaned and inspected autonomously in a processing line.
 
-The image dataset used for YOLOv4 and YOLOv7 CNN training is also included.
+### Prerequisites:
+```detection_sequence.sh``` executes the python scripts ```image_capture.py```, ```depth_capture.py``` and ```edge_depth.py``` which uses the "pyrealsense2" python package.
+This package requires access to the camera to successfully execute the data capture processes.
+ 
+The [darket](https://github.com/AlexeyAB/darknet) repository is required to run YOLOv4/YOLOv7 in ```yolo.sh```.
+
+### Running the detection
+```detection_sequence.sh``` runs the edge detection process, starting with the image and depth data capture.
+The output of the YOLO CNN saves the edge ROI in detection.json.
+The edge ROI is used to further process the depth data to obtain the graspable edge.
+```edge_depth.py``` returns the TCP grasp pose in the form `[x, y, z, a, b, c]` where `[x, y, z]` is the positional
+coordinates and `[a, b, c]` is the orientaion in axis-angle notation.
 
 ### AutoClean automation process:
 
