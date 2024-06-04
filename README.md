@@ -10,7 +10,7 @@ It is part of the "[AutoClean](https://zaf.th-deg.de/public/project/286)" projec
 ```detection_sequence.sh``` executes the python scripts ```image_capture.py```, ```depth_capture.py``` and ```edge_depth.py``` which uses the "pyrealsense2" python package.
 This package requires access to the camera to successfully execute the data capture processes.
  
-The [darket](https://github.com/AlexeyAB/darknet) repository is required to run YOLOv4/YOLOv7 in ```yolo.sh```.
+The [darknet](https://github.com/AlexeyAB/darknet) repository is required to run YOLOv4/YOLOv7 in ```yolo.sh```.
 
 ### Running the detection
 ```detection_sequence.sh``` runs the edge detection process, starting with the image and depth data capture.
@@ -18,6 +18,9 @@ The output of the YOLO CNN saves the edge ROI in detection.json.
 The edge ROI is used to further process the depth data to obtain the graspable edge.
 ```edge_depth.py``` returns the TCP grasp pose in the form `[x, y, z, a, b, c]` where `[x, y, z]` is the positional
 coordinates and `[a, b, c]` is the orientaion in axis-angle notation.
+
+### Image dataset
+The image dataset for training the YOLO CNN is available via Kaggle [here](https://www.kaggle.com/datasets/yuveshaubeeluck/edge-regions-of-powder-printed-parts/data).
 
 ### AutoClean automation process:
 
