@@ -164,21 +164,7 @@ class ObjectGrasp:
          print("No access to UR. Cannot Proceed.")
 
 if __name__ == "__main__":  
-   # Pose for detection step 1: (Overall image capture and region proposal)
-   #pose1 = [0,0,0, 0,0,0]
-   # Pose for detection step 2: (Move right above part in ROI)
-   #pose2 = [0.1,0.1,0.1, 0,0,0]
-
-
-   # Position of an edge received from edge_depth.py
-   P_grasp = [-0.08431853329930977, -0.11621903967250388, 0.2428999948501587]
-   R_grasp = np.eye(3)
-
-   # Move to capture image and start grasping
-   # Robot has a pose here, call it : "pose1"
-
    tcp_pose1 = RobotControl()
-
    object1 = ObjectGrasp(tcp_pose1, P_grasp, R_grasp)
 
    #object1.pre_grasp()
